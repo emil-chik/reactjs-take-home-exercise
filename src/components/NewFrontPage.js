@@ -17,6 +17,10 @@ const NewFrontPage = (props) => {
     props.nextPage(apiKey, cityName);
   };
 
+  const handleTextChange = (event) => {
+    setAPIKey(event.target.value);
+  };
+
   const handleSelectChange = (event) => {
     setCityName(event.target.value);
   };
@@ -30,8 +34,8 @@ const NewFrontPage = (props) => {
         <TextField
           color='secondary'
           style={styles.textField}
-          defaultValue={apiKey}
-          onChange={() => setAPIKey(apiKey)}
+          value={apiKey}
+          onChange={handleTextChange}
         />
         <br />
         <br />

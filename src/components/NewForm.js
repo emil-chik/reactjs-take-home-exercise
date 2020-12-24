@@ -12,10 +12,12 @@ const NewForm = () => {
   useEffect(async () => {
     const response = await fetch(api);
     const data = await response.json();
-    const celsius = data.current.temp_c;
-    const fahrenheit = data.current.temp_f;
-    setTemp_C(celsius);
-    setTemp_F(fahrenheit);
+    if (response.ok == true) {
+      const celsius = data.current.temp_c;
+      const fahrenheit = data.current.temp_f;
+      setTemp_C(celsius);
+      setTemp_F(fahrenheit);
+    }
   }, [api]);
 
   const nextPage = (apiKey, cityName) => {
@@ -49,7 +51,6 @@ const NewForm = () => {
           spacing={0}
           direction='column'
           alignItems='center'
-          justify='center'
           style={{ minHeight: "100vh" }}
         >
           <Grid item>
